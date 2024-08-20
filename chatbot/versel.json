@@ -1,0 +1,20 @@
+{
+    "builds": [{
+        "src": "chatbot_project/wsgi.py",
+        "use": "@vercel/python",
+        "config": { 
+            "maxLambdaSize": "15mb", 
+            "runtime": "python3.9",
+            "pip": ["--index-url", "https://pypi.org/simple"]
+        }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "chatbot_project/wsgi.py"
+        }
+    ],
+    "env": {
+        "DJANGO_SETTINGS_MODULE": "chatbot_project.settings"
+    }
+}
